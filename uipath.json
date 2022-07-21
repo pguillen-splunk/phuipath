@@ -1,0 +1,106 @@
+{
+    "appid": "b8022ee7-b8c7-4763-b404-91c7b1060da8",
+    "name": "UIPath",
+    "description": "App for UIPath to acquire access token",
+    "type": "devops",
+    "product_vendor": "UIPath",
+    "logo": "uipath.svg",
+    "logo_dark": "uipath_dark.svg",
+    "product_name": "UIPath",
+    "python_version": "3",
+    "product_version_regex": ".*",
+    "publisher": "Pablo Guillen",
+    "license": "Copyright (c) Pablo Guillen, 2022",
+    "app_version": "1.0.0",
+    "utctime_updated": "2022-06-03T13:44:57.615149Z",
+    "package_name": "phantom_uipath",
+    "main_module": "uipath_connector.pyc",
+    "min_phantom_version": "5.0.1.66250",
+    "app_wizard_version": "1.0.0",
+    "configuration": {
+        "base_url": {
+            "description": "Base url for the OAuth exchange URL",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "https://account.uipath.com",
+            "order": 0
+        },
+        "oauth_path": {
+            "description": "Oauth path for exchanging refresh token",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "/oauth/token",
+            "order": 1
+        },
+        "client_id": {
+            "description": "client id from UIPath",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "",
+            "order": 2
+        },
+        "tenant_name": {
+            "description": "UIPath tenant name",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "",
+            "order": 3
+        },
+        "refresh_token": {
+            "description": "refresh_token",
+            "data_type": "password",
+            "required": true,
+            "order": 4
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "verbose": "",
+            "type": "test",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get token",
+            "identifier": "get_token",
+            "description": "get access token from UIPath",
+            "verbose": "",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {},
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        }
+    ]
+}
